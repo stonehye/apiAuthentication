@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken')
 const authMiddleware = (req, res, next) => {
     // read the token from header or url
     const token = req.headers['x-access-token'] || req.query.token
-    console.log(token)
 
     // token does not exist
     if (!token) {
@@ -19,7 +18,7 @@ const authMiddleware = (req, res, next) => {
             jwt.verify(token, req.app.get('jwt-secret'), (err, decoded) => {
                 if (err) reject (err)
                 resolve(decoded)
-            })
+            })                                                              
         }
     )
 
